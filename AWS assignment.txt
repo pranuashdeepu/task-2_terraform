@@ -1,0 +1,124 @@
+
+
+
+Here is the brief explanation of important AWS services for better understanding
+
+
+Service				Main purpose 			Handle what		    Scale/Speed
+
+EC2 			Virtual Computers(like your own		Run Website apps,	     Compute
+			laptops)				games		
+
+Lambda 			run code withoutmanaginng any server   API backend, imageresize      Compute
+
+S3			unlimited Super safe storage           store photos, videos	     storage
+
+EBS 			Harddisk for EC2 		      Database stoarge,keepdata      storage
+								when EC2 stops
+
+RDS 			Managed SQL databases		      wordpress,e-commernce	      Database
+
+DynamoDB                 Fast No SQql database			Mobileapps,gamings scores     Database
+		
+Aurora 			Veryfast& reliable MYSQL version	High- traffic apps that 
+				by AWS		                 need speed+ reliability     Database
+
+VPC       		Your Private Network inside AWS		Keep servers hidden &        Networking
+ 								Secure from internet                     
+
+cloudfront 		Super-fast content delivery(CDN)       Speed up websiteimages/videos Networking
+
+Elastic load		Distributes Visitors across            Handle millions of user         Networking
+Balancer                  many servers				without crashing
+
+		
+ECS/EKS/Forgate		run Docker containing			Modern microservices apps     containers
+
+IAM			Who can do what(user,permission) 	Security very imp             security
+Cloudwatch 		Monitoring+ logs+ alarms		know when server is sick   	Monitoring
+
+SQS			Message queue(like whatapp message     Decouple services background    messageing
+					in order)                 jobs						
+
+SNS			send notifications                      order placed ,OTPs		Messageing
+
+Route53			DNS+ domain names			point yourwebsite.com to AWS	 Networking
+
+Grafana			Visualize & Monitor 			Graphs & alerts			Good for viewing
+
+Kafka			Move & Store real-time events		Massive data streams		Extrmely high throughts
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Terraform
+
+What is Terraform?
+
+Terraform is an open-source tool (by HashiCorp) for Infrastructure as Code (IaC).
+You write plain text files describing what you want (e.g. "I want an EC2 server + S3 bucket").
+Terraform talks to AWS APIs → creates/updates/deletes everything automatically — safely, repeatably, version-controlled (like Git for infra).
+
+"Terraform bridges development and operations by making infrastructure reliable, auditable, and fast to change."
+
+Terraform can manage low-level components like compute, storage, and networking resources, as well as high-level components like DNS entries and SaaS features.
+
+How does Terraform work?
+
+Terraform creates and manages resources on cloud platforms and other services through their application programming interfaces (APIs). 
+Providers enable Terraform to work with virtually any platform or service with an accessible API.
+
+The core Terraform workflow consists of three stages:
+
+Write: You define resources, which may be across multiple cloud providers and services. 
+For example, you might create a configuration to deploy an application on virtual machines in a Virtual Private Cloud (VPC) network with security groups and a load balancer.
+Plan: Terraform creates an execution plan describing the infrastructure it will create, update, or destroy based on the existing infrastructure and your configuration.
+
+Apply: On approval, Terraform performs the proposed operations in the correct order, respecting any resource dependencies. 
+For example, if you update the properties of a VPC and change the number of virtual machines in that VPC, Terraform will recreate the VPC before scaling the virtual machines.
+
+Terraform Private Module Registry:
+
+A private module registry is a repository for Terraform modules that is only accessible to a specific group of users, rather than being publicly available. 
+Private module registries are useful for organizations that want to manage and distribute their own infrastructure code internally, rather than using publicly available modules from the Terraform Registry.
+
+To use a private module registry, users need to configure their Terraform CLI to authenticate with the registry and access the modules. 
+This typically involves setting up an access token or other authentication method and specifying the registry URL in the Terraform configuration.
+
+Once configured, users can use the 'module' block in their Terraform configuration to reference the modules in the private registry, just like they would with publicly available modules. 
+Private module registries can be hosted on a variety of platforms, including cloud providers, on-premises servers, and open-source tools.
+
+Terraform Commands 
+1. Terraform init - Initializes the working directory.
+2. Terraform Plan - Creates an execution plan.
+3. Terraform apply - Executes the changes.
+4. Terraform destroy- Tears down everything.- Deletes all resources tracked in the state file.
+5. Terraform import - Imports an existing resource into the Terraform state, allowing it to be managed by Terraform.
+6. Terraform console- Opens an interactive console for evaluating expressions in the Terraform configuration.
+
+Core Elements of Terraform
+
+1. Terraform CLI: Terraform is an open-source tool that is packaged into a single executable binary, which you can download and run directly from the command line. 
+This tool helps you automate the creation and management of infrastructure. 
+
+2. Terraform Language:  Terraform uses HashiCorp Configuration Language (HCL) to define infrastructure. HCL is designed to be both easy to read by humans and understandable by machines, making it a great fit for DevOps tools.
+
+Infrastructure elements managed by Terraform are called resources. These can include virtual machines, S3 buckets, VPCs, and databases.
+
+4. Terraform Modules: In Terraform, a module is a container for a set of related resources that are used together to perform a specific task. Modules allow users to organize and reuse their infrastructure code, making it easier to manage complex infrastructure deployments.
+
+Modules are defined using the ' module ' block in Terraform configuration. A module block takes the following arguments:
+
+source: The source location of the module. This can be a local path or a URL.
+name: The name of the module. This is used to reference the module in other parts of the configuration.
+version: The version of the module to use. This is optional and can be used to specify a specific version of the module.
+
+Advantages:
+Speed & Efficiency: Spin up entire environments in minutes.
+Multi-Cloud Strategy: Learn one language (HCL) and use it for AWS, Azure, and Google Cloud.
+Documentation: Terraform has excellent documentation and a massive community.
+
+Disadvantages
+State Management Risks: If the terraform.tfstate file is deleted or corrupted, Terraform loses track of your infrastructure.
+Learning Curve: While HCL is simple, understanding how cloud resources relate to each other (dependencies) takes time.
+
